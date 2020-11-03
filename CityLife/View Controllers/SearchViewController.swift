@@ -1,20 +1,19 @@
 //
-//  ViewController.swift
+//  SearchViewController.swift
 //  CityLife
 //
-//  Created by KirRealDev on 25.10.2020.
+//  Created by KirRealDev 
 //  Copyright © 2020 KirRealDev. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
 
-
 }
-

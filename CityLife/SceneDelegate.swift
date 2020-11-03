@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  CityLife
 //
-//  Created by KirRealDev on 25.10.2020.
+//  Created by KirRealDev 
 //  Copyright © 2020 KirRealDev. All rights reserved.
 //
 
