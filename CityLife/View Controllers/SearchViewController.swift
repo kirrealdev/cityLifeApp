@@ -35,18 +35,19 @@ class SearchViewController: UIViewController, UITableViewDelegate {
     func loadBasicDataOfCity() {
         
     let service = NetworkService()
+    DispatchQueue.main.async {
     service.loadBasicInfo(onComplete: { [weak self] (cityInfo) in
         self?.basicInfoOfCity = cityInfo
-
         NetworkVariable.currCityButtonName = self?.basicInfoOfCity?.full_name ?? "data loading error"
         NetworkVariable.currCityShortName = self?.basicInfoOfCity?.name ?? "data loading error"
         NetworkVariable.currCityPopulation = self?.basicInfoOfCity?.population ?? 0
         NetworkVariable.currCityTimezone = self?.basicInfoOfCity?._links.timezone.name ?? "data loading error"
         NetworkVariable.currUrbanAreaURL = self?.basicInfoOfCity?._links.urban_area?.href ?? " "
+        self?.delegate?.didFinishUpdates()
         }) { (error) in
             print(error.localizedDescription)
         }
-    
+        }
     }
     
     override func viewDidLoad() {
@@ -70,9 +71,7 @@ extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         NetworkVariable.currCityURL = citiesDict[indexPath.row]._links.item.href
-        
         loadBasicDataOfCity()
-        delegate?.didFinishUpdates()
         dismiss(animated: true, completion: nil)
     }
 

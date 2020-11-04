@@ -11,7 +11,7 @@ import UIKit
 
 extension UIImageView {
     
-    func loadImage(by imageURL: String) { // rename
+    func loadImageByURL(by imageURL: String) { // rename
         let url = URL(string: imageURL)!
 
         let cache = URLCache.shared

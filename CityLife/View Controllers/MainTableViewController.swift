@@ -30,7 +30,10 @@ class MainTableViewController: UITableViewController, SearchViewDelegate {
     var imageData: CityImageData? = nil
     
     func didFinishUpdates() {
-        viewDidLoad()
+        loadPhotoData()
+        loadQualityDataForCities()
+        self.navigationItem.title = NetworkVariable.currCityButtonName
+        self.mainTableView.reloadData()
     }
     
     func loadPhotoData() {
@@ -39,7 +42,7 @@ class MainTableViewController: UITableViewController, SearchViewDelegate {
                 self?.imageData = photo
                 self?.mainTableView.reloadData() }) { (error) in
                 print(error.localizedDescription)
-                }
+            }
     }
     
     private func loadQualityDataForCities() {
@@ -70,11 +73,11 @@ class MainTableViewController: UITableViewController, SearchViewDelegate {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath) as? ImageViewCell else {
                 return UITableViewCell()
             }
-            if (imageData?.results.count == 0) { cell.customImageView.loadImage(by: NetworkConstant.errorLoadImageURL)
+            if (imageData?.results.count == 0) { cell.customImageView.loadImageByURL(by: NetworkConstant.errorLoadImageURL)
                 return cell
                 }
             let model = imageData?.results[indexPath.row] ?? nil
-            cell.customImageView.loadImage(by: model?.urls.regular ?? NetworkConstant.errorLoadImageURL)
+            cell.customImageView.loadImageByURL(by: model?.urls.regular ?? NetworkConstant.errorLoadImageURL)
             return cell
         }
         else if (indexPath.row == 1) {
