@@ -10,10 +10,12 @@ import UIKit
 
 class ImageViewCell: UITableViewCell {
     
+    
     @IBOutlet weak var customImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        customImageView.image = UIImage(named: "customImage")
+        customImageView.contentMode = .scaleAspectFill
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -22,5 +22,5 @@ enum NetworkVariable {
     static var currCityShortName = "Moscow-Moscow-Russia"
     static var currCityButtonName = "Moscow, Moscow, Russia"
     static var currCityTimezone = "Europe/Moscow"
-    static var currCityPopulation: String = "10381222"
+    static var currCityPopulation: Int64 = 10381222
 }

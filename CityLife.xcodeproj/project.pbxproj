@@ -24,6 +24,7 @@
 		FB3CCDBE2545B34200F08400 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB3CCDBC2545B34200F08400 /* Main.storyboard */; };
 		FB3CCDC02545B34600F08400 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB3CCDBF2545B34600F08400 /* Assets.xcassets */; };
 		FB3CCDC32545B34600F08400 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB3CCDC12545B34600F08400 /* LaunchScreen.storyboard */; };
+		FB5B553B2553105E00AB4BA4 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5B553A2553105E00AB4BA4 /* UIColor.swift */; };
 		FB970E6B254EC16A00AAA27C /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB970E6A254EC16A00AAA27C /* MainTableViewController.swift */; };
 		FB970E6F254EE28300AAA27C /* TitleInfoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB970E6E254EE28300AAA27C /* TitleInfoViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -48,6 +49,7 @@
 		FB3CCDBF2545B34600F08400 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB3CCDC22545B34600F08400 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB3CCDC42545B34600F08400 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB5B553A2553105E00AB4BA4 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		FB970E6A254EC16A00AAA27C /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		FB970E6E254EE28300AAA27C /* TitleInfoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleInfoViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,7 +108,7 @@
 		FB3CCDAA2545B34200F08400 = {
 			isa = PBXGroup;
 			children = (
-				FB156CB02549D02200969AB7 /* UIImageView.swift */,
+				FB5B55392553101300AB4BA4 /* Extensions */,
 				FB3CCDB52545B34200F08400 /* CityLife */,
 				FB3CCDB42545B34200F08400 /* Products */,
 			);
@@ -136,6 +138,15 @@
 				FB3CCDC42545B34600F08400 /* Info.plist */,
 			);
 			path = CityLife;
+			sourceTree = "<group>";
+		};
+		FB5B55392553101300AB4BA4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FB156CB02549D02200969AB7 /* UIImageView.swift */,
+				FB5B553A2553105E00AB4BA4 /* UIColor.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,6 +226,7 @@
 				FB156CAC2549AB5300969AB7 /* NetworkParameters.swift in Sources */,
 				FB156C9A2549749C00969AB7 /* BasicInfoViewCell.swift in Sources */,
 				FB970E6B254EC16A00AAA27C /* MainTableViewController.swift in Sources */,
+				FB5B553B2553105E00AB4BA4 /* UIColor.swift in Sources */,
 				FB156CA4254998E700969AB7 /* CityImageData.swift in Sources */,
 				FB156CA825499A0000969AB7 /* BasicInfoData.swift in Sources */,
 				FB156CA025498F8700969AB7 /* SearchViewController.swift in Sources */,

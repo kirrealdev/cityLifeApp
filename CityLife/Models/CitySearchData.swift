@@ -29,13 +29,13 @@ struct SearchResultData: Decodable {
     let matching_full_name: String
 }
 
-struct LinksData: Codable {
+struct LinksData: Decodable {
     let item: ItemData
     enum CodingKeys: String, CodingKey {
         case item = "city:item"
     }
 }
 
-struct ItemData: Codable {
+struct ItemData: Decodable {
     let href: String
 }
