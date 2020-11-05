@@ -2,7 +2,7 @@
 //  UIImageView.swift
 //  CityLife
 //
-//  Created by KirRealDev on 28.10.2020.
+//  Created by KirRealDev 
 //  Copyright © 2020 KirRealDev. All rights reserved.
 //
 

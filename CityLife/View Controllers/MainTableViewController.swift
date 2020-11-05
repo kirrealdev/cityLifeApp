@@ -46,14 +46,14 @@ class MainTableViewController: UITableViewController, SearchViewDelegate {
     }
     
     private func loadQualityDataForCities() {
-
-    let serviceCity = NetworkService()
-    serviceCity.loadQualityScore(onComplete: { [weak self] (city) in
+        let serviceCity = NetworkService()
+        serviceCity.loadQualityScore(onComplete: { [weak self] (city) in
             self?.dataOfQuality = city
             self?.mainTableView.reloadData()}) { (error) in
             print(error.localizedDescription)
             }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadPhotoData()
@@ -67,7 +67,6 @@ class MainTableViewController: UITableViewController, SearchViewDelegate {
         return (dataOfQuality?.categories.count ?? 0) + Constants.defaultCountOfBasicRows
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.row == 0) {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath) as? ImageViewCell else {
@@ -104,12 +103,10 @@ class MainTableViewController: UITableViewController, SearchViewDelegate {
             if (indexOfParameterQuality < dataOfQuality?.categories.count ?? 0) {
                 cell.parameterOfQualityLabel.text = dataOfQuality?.categories[indexOfParameterQuality].name ?? "error writing data"
                 cell.scoreLabel.text = String(format: "%.2f",dataOfQuality?.categories[indexOfParameterQuality].score_out_of_10 ?? 0)
-                cell.scoreProgressView.setProgress((dataOfQuality?.categories[indexOfParameterQuality].score_out_of_10 ?? 0) / 10, animated: false) // подумать
-                cell.scoreProgressView.progressTintColor = UIColor(hexString: dataOfQuality?.categories[indexOfParameterQuality].color ?? "#1965ad")
-            
+                cell.scoreProgressView.setProgress((dataOfQuality?.categories[indexOfParameterQuality].score_out_of_10 ?? 0) / 10, animated: false)
+                cell.scoreProgressView.progressTintColor  = UIColor(hex: dataOfQuality?.categories[indexOfParameterQuality].color ?? "#1965ad")
             }
             return cell
         }
     }
-
 }

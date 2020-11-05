@@ -108,7 +108,6 @@
 		FB3CCDAA2545B34200F08400 = {
 			isa = PBXGroup;
 			children = (
-				FB5B55392553101300AB4BA4 /* Extensions */,
 				FB3CCDB52545B34200F08400 /* CityLife */,
 				FB3CCDB42545B34200F08400 /* Products */,
 			);
@@ -133,6 +132,7 @@
 				FB156CAF2549B92100969AB7 /* Services */,
 				FB156CA12549976800969AB7 /* View Controllers */,
 				FB156C98254973B900969AB7 /* Cells */,
+				FB5B55392553101300AB4BA4 /* Extensions */,
 				FB3CCDBF2545B34600F08400 /* Assets.xcassets */,
 				FB3CCDC12545B34600F08400 /* LaunchScreen.storyboard */,
 				FB3CCDC42545B34600F08400 /* Info.plist */,

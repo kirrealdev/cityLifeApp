@@ -2,7 +2,7 @@
 //  TitleInfoViewCell.swift
 //  CityLife
 //
-//  Created by KirRealDev on 01.11.2020.
+//  Created by KirRealDev 
 //  Copyright © 2020 KirRealDev. All rights reserved.
 //
 
