@@ -10,9 +10,6 @@ import UIKit
 
 class BasicInfoViewCell: UITableViewCell {
 
-    
-    
-
     @IBOutlet weak var firstBasicParameterLabel: UILabel!
     @IBOutlet weak var secondBasicParameterLabel: UILabel!
     @IBOutlet weak var firstBasicParameterValueLabel: UILabel!

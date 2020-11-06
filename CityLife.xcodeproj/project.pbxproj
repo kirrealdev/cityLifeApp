@@ -65,36 +65,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FB156C98254973B900969AB7 /* Cells */ = {
+		FB156C98254973B900969AB7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FB156C942549728800969AB7 /* ImageViewCell.swift */,
-				FB970E6E254EE28300AAA27C /* TitleInfoViewCell.swift */,
-				FB156C992549749C00969AB7 /* BasicInfoViewCell.swift */,
-				FB156C9B2549756E00969AB7 /* QualityScoreViewCell.swift */,
-				FB156C9D2549783F00969AB7 /* SearchResultViewCell.swift */,
+				FBA5AAD92555513900F0DA57 /* Cells */,
 			);
-			path = Cells;
+			path = View;
 			sourceTree = "<group>";
 		};
-		FB156CA12549976800969AB7 /* View Controllers */ = {
+		FB156CA12549976800969AB7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				FB970E6A254EC16A00AAA27C /* MainTableViewController.swift */,
 				FB156C9F25498F8700969AB7 /* SearchViewController.swift */,
 			);
-			path = "View Controllers";
+			path = Controllers;
 			sourceTree = "<group>";
 		};
-		FB156CA2254997AC00969AB7 /* Models */ = {
+		FB156CA2254997AC00969AB7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FB156CA3254998E700969AB7 /* CityImageData.swift */,
-				FB156CA7254999FF00969AB7 /* BasicInfoData.swift */,
-				FB156CA52549998F00969AB7 /* QualityOfLifeData.swift */,
-				FB156CA925499BA300969AB7 /* CitySearchData.swift */,
+				FBA5AADA255552F900F0DA57 /* Data */,
+				FB156CAF2549B92100969AB7 /* Services */,
+				FBDA01C62554857100A85F75 /* Parameters */,
+				FB5B55392553101300AB4BA4 /* Extensions */,
 			);
-			path = Models;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		FB156CAF2549B92100969AB7 /* Services */ = {
@@ -126,13 +122,10 @@
 			children = (
 				FB3CCDB62545B34200F08400 /* AppDelegate.swift */,
 				FB3CCDB82545B34200F08400 /* SceneDelegate.swift */,
-				FB156CAB2549AB5300969AB7 /* NetworkParameters.swift */,
 				FB3CCDBC2545B34200F08400 /* Main.storyboard */,
-				FB156CA2254997AC00969AB7 /* Models */,
-				FB156CAF2549B92100969AB7 /* Services */,
-				FB156CA12549976800969AB7 /* View Controllers */,
-				FB156C98254973B900969AB7 /* Cells */,
-				FB5B55392553101300AB4BA4 /* Extensions */,
+				FB156CA2254997AC00969AB7 /* Model */,
+				FB156C98254973B900969AB7 /* View */,
+				FB156CA12549976800969AB7 /* Controllers */,
 				FB3CCDBF2545B34600F08400 /* Assets.xcassets */,
 				FB3CCDC12545B34600F08400 /* LaunchScreen.storyboard */,
 				FB3CCDC42545B34600F08400 /* Info.plist */,
@@ -147,6 +140,37 @@
 				FB5B553A2553105E00AB4BA4 /* UIColor.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FBA5AAD92555513900F0DA57 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FB156C942549728800969AB7 /* ImageViewCell.swift */,
+				FB970E6E254EE28300AAA27C /* TitleInfoViewCell.swift */,
+				FB156C992549749C00969AB7 /* BasicInfoViewCell.swift */,
+				FB156C9B2549756E00969AB7 /* QualityScoreViewCell.swift */,
+				FB156C9D2549783F00969AB7 /* SearchResultViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		FBA5AADA255552F900F0DA57 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				FB156CA3254998E700969AB7 /* CityImageData.swift */,
+				FB156CA7254999FF00969AB7 /* BasicInfoData.swift */,
+				FB156CA52549998F00969AB7 /* QualityOfLifeData.swift */,
+				FB156CA925499BA300969AB7 /* CitySearchData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		FBDA01C62554857100A85F75 /* Parameters */ = {
+			isa = PBXGroup;
+			children = (
+				FB156CAB2549AB5300969AB7 /* NetworkParameters.swift */,
+			);
+			path = Parameters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

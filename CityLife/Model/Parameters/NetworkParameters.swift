@@ -13,7 +13,7 @@ enum NetworkConstant {
     static let baseURLImage = "https://api.unsplash.com"
     static let baseURLCity = "https://api.teleport.org/api/urban_areas/slug:"
     static let baseURLForSearchCity = "https://api.teleport.org/api/cities/?search="
-    static let errorLoadImageURL = "https://unsplash.com/a/img/empty-states/photos.png" // переделать нормально
+    static let errorLoadImageURL = "https://unsplash.com/a/img/empty-states/photos.png" 
 }
 
 enum NetworkVariable {
