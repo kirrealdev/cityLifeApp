@@ -9,6 +9,7 @@
 import Foundation
 
 enum NetworkConstant {
+    
     static let accessKeyForPhoto = "C7So1asmp_10sJfWJJkxMkeeH3aLiIzG-mClpZxHj5k"
     static let baseURLImage = "https://api.unsplash.com"
     static let baseURLCity = "https://api.teleport.org/api/urban_areas/slug:"
@@ -17,6 +18,7 @@ enum NetworkConstant {
 }
 
 enum NetworkVariable {
+    
     static var currCityURL = "https://api.teleport.org/api/cities/geonameid:524901/"
     static var currUrbanAreaURL = "https://api.teleport.org/api/urban_areas/slug:moscow/"
     static var currCityShortName = "Moscow-Moscow-Russia"

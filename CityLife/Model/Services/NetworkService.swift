@@ -9,6 +9,7 @@
 import Foundation
 
 enum ServerError: Error {
+    
     case noDataProvided
     case failedToDecode
 }
@@ -35,22 +36,24 @@ class NetworkService {
                 onError(ServerError.noDataProvided)
                 return
             }
-            guard let photo = try? JSONDecoder().decode(CityImageData.self, from: data) else {
+            guard let image = try? JSONDecoder().decode(CityImageData.self, from: data) else {
                 print("could not decode")
                 onError(ServerError.failedToDecode)
                 return
             }
             DispatchQueue.main.async {
-                onComplete(photo)
+                onComplete(image)
             }
-            }
+        }
         task.resume()
     }
     
     func loadQualityScore(onComplete: @escaping (QualityOfLifeData) -> Void, onError: @escaping (Error) -> Void) {
 
         let urlString = NetworkVariable.currUrbanAreaURL + "scores/"
+        
         guard let url = URL(string: urlString) else { return }
+        
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 onError(error)
@@ -60,13 +63,13 @@ class NetworkService {
                 onError(ServerError.noDataProvided)
                 return
             }
-            guard let qualityScoreData = try? JSONDecoder().decode(QualityOfLifeData.self, from: data) else {
+            guard let qualityScore = try? JSONDecoder().decode(QualityOfLifeData.self, from: data) else {
                 print("could not decode")
                 onError(ServerError.failedToDecode)
                 return
             }
             DispatchQueue.main.async {
-                onComplete(qualityScoreData)
+                onComplete(qualityScore)
             }
         }
         task.resume()
@@ -87,16 +90,14 @@ class NetworkService {
                 onError(ServerError.noDataProvided)
                 return
             }
-            guard let searchCity = try? JSONDecoder().decode(CitySearchData.self, from: data) else {
+            guard let searchResults = try? JSONDecoder().decode(CitySearchData.self, from: data) else {
                 print("could not decode")
                 onError(ServerError.failedToDecode)
                 return
             }
-
             DispatchQueue.main.async {
-                onComplete(searchCity)
+                onComplete(searchResults)
             }
-
         }
         task.resume()
     }
@@ -116,15 +117,16 @@ class NetworkService {
                    onError(ServerError.noDataProvided)
                    return
                }
-               guard let basicInfoOfCity = try? JSONDecoder().decode(BasicInfoData.self, from: data) else {
+               guard let basicInfo = try? JSONDecoder().decode(BasicInfoData.self, from: data) else {
                    print("could not decode")
                    onError(ServerError.failedToDecode)
                    return
                }
                DispatchQueue.main.async {
-                   onComplete(basicInfoOfCity)
+                   onComplete(basicInfo)
                }
            }
            task.resume()
        }
+
 }
