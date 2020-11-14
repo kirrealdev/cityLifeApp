@@ -35,7 +35,7 @@ class MainTableViewController: UITableViewController, SearchViewDelegate {
            servicePhoto.loadImage(onComplete: { [weak self] (photo) in
                 self?.imageData = photo
                 self?.mainTableView.reloadData() }) { (error) in
-                print(error.localizedDescription)
+                NSLog(error.localizedDescription)
             }
     }
     
@@ -45,7 +45,7 @@ class MainTableViewController: UITableViewController, SearchViewDelegate {
         serviceCity.loadQualityScore(onComplete: { [weak self] (city) in
             self?.qualityScoreData = city
             self?.mainTableView.reloadData()}) { (error) in
-            print(error.localizedDescription)
+            NSLog(error.localizedDescription)
             }
     }
     

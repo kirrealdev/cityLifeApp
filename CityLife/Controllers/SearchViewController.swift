@@ -30,7 +30,7 @@ class SearchViewController: UIViewController, UITableViewDelegate {
         service.searchByCity(query: query, onComplete: { [weak self] (cities) in
             self?.citiesArray = cities.embedded.searchResults
             self?.searchTableView.reloadData() }) {(error) in
-                print(error.localizedDescription)
+                NSLog(error.localizedDescription)
             }
     }
     
@@ -46,8 +46,9 @@ class SearchViewController: UIViewController, UITableViewDelegate {
             NetworkVariable.currCityTimezone = self?.basicInfoOfCity?._links.timezone.name ?? "data loading error"
             NetworkVariable.currUrbanAreaURL = self?.basicInfoOfCity?._links.urban_area?.href ?? " "
             self?.delegate?.didFinishUpdates()
-        }) { (error) in
-            print(error.localizedDescription)
+        })
+        { (error) in
+            NSLog(error.localizedDescription)
         }
     }
     

@@ -13,7 +13,7 @@ struct BasicInfoData: Decodable {
     let _links: ExtendedBasicInfoData
     let full_name: String
     let name: String
-    let population: Int64
+    let population: UInt64
 }
 
 struct ExtendedBasicInfoData: Decodable {

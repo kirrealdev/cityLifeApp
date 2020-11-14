@@ -37,7 +37,7 @@ class NetworkService {
                 return
             }
             guard let image = try? JSONDecoder().decode(CityImageData.self, from: data) else {
-                print("could not decode")
+                NSLog("could not decode")
                 onError(ServerError.failedToDecode)
                 return
             }
@@ -64,7 +64,7 @@ class NetworkService {
                 return
             }
             guard let qualityScore = try? JSONDecoder().decode(QualityOfLifeData.self, from: data) else {
-                print("could not decode")
+                NSLog("could not decode")
                 onError(ServerError.failedToDecode)
                 return
             }
@@ -91,7 +91,7 @@ class NetworkService {
                 return
             }
             guard let searchResults = try? JSONDecoder().decode(CitySearchData.self, from: data) else {
-                print("could not decode")
+                NSLog("could not decode")
                 onError(ServerError.failedToDecode)
                 return
             }
@@ -118,7 +118,7 @@ class NetworkService {
                    return
                }
                guard let basicInfo = try? JSONDecoder().decode(BasicInfoData.self, from: data) else {
-                   print("could not decode")
+                   NSLog("could not decode")
                    onError(ServerError.failedToDecode)
                    return
                }
