@@ -16,7 +16,8 @@ enum ServerError: Error {
 
 class NetworkService {
     
-    func loadImage(onComplete: @escaping (CityImageData) -> Void, onError: @escaping (Error) -> Void) {
+    // MARK: - Load Image by URL
+    func loadImageByURL(onComplete: @escaping (CityImageData) -> Void, onError: @escaping (Error) -> Void) {
         
         let currCityName =  NetworkVariable.currCityButtonName
             .components(separatedBy:" ")
@@ -48,7 +49,8 @@ class NetworkService {
         task.resume()
     }
     
-    func loadQualityScore(onComplete: @escaping (QualityOfLifeData) -> Void, onError: @escaping (Error) -> Void) {
+    // MARK: - Load Quality Data by URL
+    func loadQualityScoreByURL(onComplete: @escaping (QualityOfLifeData) -> Void, onError: @escaping (Error) -> Void) {
 
         let urlString = NetworkVariable.currUrbanAreaURL + "scores/"
         
@@ -74,8 +76,9 @@ class NetworkService {
         }
         task.resume()
     }
-
-    func searchByCity(query: String, onComplete: @escaping (CitySearchData) -> Void, onError: @escaping (Error) -> Void) {
+    
+    // MARK: - load Cities by Current Query
+    func loadCitiesByCurrentQuery(query: String, onComplete: @escaping (CitySearchData) -> Void, onError: @escaping (Error) -> Void) {
 
         let urlString = NetworkConstant.baseURLForSearchCity + query
 
@@ -101,8 +104,9 @@ class NetworkService {
         }
         task.resume()
     }
-
-    func loadBasicInfo(onComplete: @escaping (BasicInfoData) -> Void, onError: @escaping (Error) -> Void) {
+    
+    // MARK: - Load Basic Info by URL
+    func loadBasicInfoByURL(onComplete: @escaping (BasicInfoData) -> Void, onError: @escaping (Error) -> Void) {
 
         let urlString = NetworkVariable.currCityURL
         

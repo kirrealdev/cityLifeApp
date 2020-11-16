@@ -13,38 +13,40 @@ protocol SearchViewDelegate: class {
 import UIKit
 
 class SearchViewController: UIViewController, UITableViewDelegate {
-
+    
+    // MARK: - IBOutlets
     @IBOutlet weak var searchTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    // MARK: - delegate variable
     weak var delegate: SearchViewDelegate?
     
-    var citiesArray = [SearchResultData]()
-    var basicInfoOfCity: BasicInfoData? = nil
-    
-    
-    // MARK: - Loading data
-    func loadCitiesByCurrentQuery(query: String) {
+    // MARK: - Data containers
+    private var searchResultDataArray = [SearchResultData]()
+    private var basicInfoDataContainer: BasicInfoData? = nil
+        
+    // MARK: - Load data
+    func loadCitiesNames(query: String) {
         
         let service = NetworkService()
-        service.searchByCity(query: query, onComplete: { [weak self] (cities) in
-            self?.citiesArray = cities.embedded.searchResults
+        service.loadCitiesByCurrentQuery(query: query, onComplete: { [weak self] (cities) in
+            self?.searchResultDataArray = cities.embedded.searchResults
             self?.searchTableView.reloadData() }) {(error) in
                 NSLog(error.localizedDescription)
             }
     }
     
-    func loadBasicDataOfCity() {
+    func loadBasicInfoData() {
         
         let service = NetworkService()
     
-        service.loadBasicInfo(onComplete: { [weak self] (cityInfo) in
-            self?.basicInfoOfCity = cityInfo
-            NetworkVariable.currCityButtonName = self?.basicInfoOfCity?.full_name ?? "data loading error"
-            NetworkVariable.currCityShortName = self?.basicInfoOfCity?.name ?? "data loading error"
-            NetworkVariable.currCityPopulation = self?.basicInfoOfCity?.population ?? 0
-            NetworkVariable.currCityTimezone = self?.basicInfoOfCity?._links.timezone.name ?? "data loading error"
-            NetworkVariable.currUrbanAreaURL = self?.basicInfoOfCity?._links.urban_area?.href ?? " "
+        service.loadBasicInfoByURL(onComplete: { [weak self] (cityInfo) in
+            self?.basicInfoDataContainer = cityInfo
+            NetworkVariable.currCityButtonName = self?.basicInfoDataContainer?.full_name ?? "data loading error"
+            NetworkVariable.currCityShortName = self?.basicInfoDataContainer?.name ?? "data loading error"
+            NetworkVariable.currCityPopulation = self?.basicInfoDataContainer?.population ?? 0
+            NetworkVariable.currCityTimezone = self?.basicInfoDataContainer?._links.timezone.name ?? "data loading error"
+            NetworkVariable.currUrbanAreaURL = self?.basicInfoDataContainer?._links.urban_area?.href ?? " "
             self?.delegate?.didFinishUpdates()
         })
         { (error) in
@@ -52,6 +54,7 @@ class SearchViewController: UIViewController, UITableViewDelegate {
         }
     }
     
+    // MARK: - viev Did Load
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -59,25 +62,26 @@ class SearchViewController: UIViewController, UITableViewDelegate {
 
 }
 
+// MARK: - extensions
 extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return citiesArray.count
+        return searchResultDataArray.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = searchTableView.dequeueReusableCell(withIdentifier: "searchResultCell", for: indexPath)
-        cell.textLabel?.text = citiesArray[indexPath.row].matching_full_name
+        cell.textLabel?.text = searchResultDataArray[indexPath.row].matching_full_name
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        NetworkVariable.currCityURL = citiesArray[indexPath.row]._links.item.href
-        loadBasicDataOfCity()
+        NetworkVariable.currCityURL = searchResultDataArray[indexPath.row]._links.item.href
+        loadBasicInfoData()
         dismiss(animated: true, completion: nil)
     }
 
@@ -87,7 +91,7 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        loadCitiesByCurrentQuery(query: searchText)
+        loadCitiesNames(query: searchText)
     }
 
 }

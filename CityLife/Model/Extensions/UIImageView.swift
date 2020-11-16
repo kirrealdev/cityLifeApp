@@ -11,8 +11,8 @@ import UIKit
 
 extension UIImageView {
     
-    func loadImageByURL(by imageURL: String) {
-        
+    func loadImageForCustomImageView(by imageURL: String) {
+ 
         let url = URL(string: imageURL)!
         let cache = URLCache.shared
         let request = URLRequest(url: url)
