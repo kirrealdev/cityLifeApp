@@ -17,7 +17,7 @@
 		FB156CA825499A0000969AB7 /* BasicInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB156CA7254999FF00969AB7 /* BasicInfoData.swift */; };
 		FB156CAA25499BA300969AB7 /* CitySearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB156CA925499BA300969AB7 /* CitySearchData.swift */; };
 		FB156CAC2549AB5300969AB7 /* NetworkParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB156CAB2549AB5300969AB7 /* NetworkParameters.swift */; };
-		FB156CAE2549B71600969AB7 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB156CAD2549B71600969AB7 /* NetworkService.swift */; };
+		FB156CAE2549B71600969AB7 /* NetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB156CAD2549B71600969AB7 /* NetworkServices.swift */; };
 		FB156CB12549D02200969AB7 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB156CB02549D02200969AB7 /* UIImageView.swift */; };
 		FB3CCDB72545B34200F08400 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3CCDB62545B34200F08400 /* AppDelegate.swift */; };
 		FB3CCDB92545B34200F08400 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3CCDB82545B34200F08400 /* SceneDelegate.swift */; };
@@ -40,7 +40,7 @@
 		FB156CA7254999FF00969AB7 /* BasicInfoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoData.swift; sourceTree = "<group>"; };
 		FB156CA925499BA300969AB7 /* CitySearchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySearchData.swift; sourceTree = "<group>"; };
 		FB156CAB2549AB5300969AB7 /* NetworkParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkParameters.swift; sourceTree = "<group>"; };
-		FB156CAD2549B71600969AB7 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		FB156CAD2549B71600969AB7 /* NetworkServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServices.swift; sourceTree = "<group>"; };
 		FB156CB02549D02200969AB7 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		FB3CCDB32545B34200F08400 /* CityLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB3CCDB62545B34200F08400 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -96,7 +96,7 @@
 		FB156CAF2549B92100969AB7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				FB156CAD2549B71600969AB7 /* NetworkService.swift */,
+				FB156CAD2549B71600969AB7 /* NetworkServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -254,7 +254,7 @@
 				FB156CA4254998E700969AB7 /* CityImageData.swift in Sources */,
 				FB156CA825499A0000969AB7 /* BasicInfoData.swift in Sources */,
 				FB156CA025498F8700969AB7 /* SearchViewController.swift in Sources */,
-				FB156CAE2549B71600969AB7 /* NetworkService.swift in Sources */,
+				FB156CAE2549B71600969AB7 /* NetworkServices.swift in Sources */,
 				FB156C9E2549783F00969AB7 /* SearchResultViewCell.swift in Sources */,
 				FB156CA62549998F00969AB7 /* QualityOfLifeData.swift in Sources */,
 				FB156CAA25499BA300969AB7 /* CitySearchData.swift in Sources */,
