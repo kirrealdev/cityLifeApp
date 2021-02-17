@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class MainTableViewController: UITableViewController, SearchViewDelegate {
 
@@ -22,6 +23,8 @@ class MainTableViewController: UITableViewController, SearchViewDelegate {
         searchVC.modalPresentationStyle = .overFullScreen
         present(searchVC, animated: true, completion: nil)
     }
+    // MARK: - Managers
+    let locationManager = CLLocationManager()
     
     // MARK: - Constants for TableView
     private enum ConstantsForTableView {
@@ -33,6 +36,7 @@ class MainTableViewController: UITableViewController, SearchViewDelegate {
     private var indexOfParameterQuality: Int = 0
     
     // MARK: - Data containers
+    private var currLocation: CLLocationCoordinate2D? = nil
     private var qualityOfLifeDataContainer: QualityOfLifeData? = nil
     private var cityImageDataСontainer: CityImageData? = nil
 
@@ -56,18 +60,43 @@ class MainTableViewController: UITableViewController, SearchViewDelegate {
             NSLog(error.localizedDescription)
             }
     }
+   
+    private func getCurrentLocation() {
+        
+        // Ask for authorisation from the User.
+        self.locationManager.requestAlwaysAuthorization()
+        
+        // For use in foreground.
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+        
+    }
     
     // MARK: - view Did Load
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        getCurrentLocation()
+
         loadImageData()
         loadQualityOfLifeData()
         self.navigationItem.title = NetworkVariable.currCityButtonName
     }
     
-    // MARK: - did Finish Updates
-    func didFinishUpdates() {
+    // MARK: - view Did Appear
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
+    }
+    
+    // MARK: - did Finish Network Updates (delegate method)
+    func didFinishNetworkUpdates() {
         
         loadImageData()
         loadQualityOfLifeData()
@@ -83,7 +112,7 @@ class MainTableViewController: UITableViewController, SearchViewDelegate {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if (indexPath.row == 0) {
+        if (indexPath.row == 1) {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath) as? ImageViewCell else {
                 return UITableViewCell()
             }
@@ -93,14 +122,15 @@ class MainTableViewController: UITableViewController, SearchViewDelegate {
                 return cell
             }
 
-            let model = cityImageDataСontainer?.results[indexPath.row] ?? nil
+            let model = cityImageDataСontainer?.results[indexPath.row - 1] ?? nil
             cell.customImageView.loadImageForCustomImageView(by: model?.urls.regular ?? NetworkConstant.errorLoadImageURL)
             
             return cell
         }
-        else if (indexPath.row == 1) {
+        else if (indexPath.row == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "titleInfoCell", for: indexPath) as! TitleInfoViewCell
-            cell.titleInfoLabel.text = "BASIC CITY INFO"
+//            cell.titleInfoLabel.text = "BASIC CITY INFO"
+            cell.titleInfoLabel.text = "Current Location:" + " " + String(currLocation?.latitude ?? 0) + " " + String(currLocation?.longitude ?? 0)
             
             return cell
         }
@@ -133,4 +163,13 @@ class MainTableViewController: UITableViewController, SearchViewDelegate {
         }
     }
 
+}
+
+extension MainTableViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        currLocation = locValue
+        self.mainTableView.reloadData()
+    }
 }

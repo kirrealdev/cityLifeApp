@@ -7,7 +7,7 @@
 //
 protocol SearchViewDelegate: class {
     
-    func didFinishUpdates()
+    func didFinishNetworkUpdates()
 }
 
 import UIKit
@@ -47,7 +47,7 @@ class SearchViewController: UIViewController, UITableViewDelegate {
             NetworkVariable.currCityPopulation = self?.basicInfoDataContainer?.population ?? 0
             NetworkVariable.currCityTimezone = self?.basicInfoDataContainer?._links.timezone.name ?? "data loading error"
             NetworkVariable.currUrbanAreaURL = self?.basicInfoDataContainer?._links.urban_area?.href ?? " "
-            self?.delegate?.didFinishUpdates()
+            self?.delegate?.didFinishNetworkUpdates()
         })
         { (error) in
             NSLog(error.localizedDescription)
