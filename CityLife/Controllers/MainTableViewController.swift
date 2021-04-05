@@ -42,7 +42,7 @@ class MainTableViewController: UITableViewController, SearchViewDelegate {
     private var currCityInfo: CityInfoByCurrentLocation? = nil
     private var basicInfoDataContainer: BasicInfoData? = nil
 
-    // // MARK: - Load Basic Info Data
+    // MARK: - Load all Information about City
     func loadAllInformationAboutCity() {
         
         let service = NetworkService()
@@ -63,8 +63,7 @@ class MainTableViewController: UITableViewController, SearchViewDelegate {
             NSLog(error.localizedDescription)
         }
     }
-    
-    // MARK: - Load data
+    // MARK: - Load Image data
     func loadImageData() {
         
         let serviceImage = NetworkService()
@@ -74,7 +73,7 @@ class MainTableViewController: UITableViewController, SearchViewDelegate {
                 NSLog(error.localizedDescription)
             }
     }
-    
+    // MARK: - Load Quality data
     private func loadQualityOfLifeData() {
         
         let serviceCity = NetworkService()
@@ -84,7 +83,7 @@ class MainTableViewController: UITableViewController, SearchViewDelegate {
             NSLog(error.localizedDescription)
             }
     }
-    
+    // MARK: - Load Data by Location
     private func loadDataByLocation() {
         
         let currLat: Double = currLocation?.latitude ?? 55.755786
@@ -99,7 +98,7 @@ class MainTableViewController: UITableViewController, SearchViewDelegate {
                 NSLog(error.localizedDescription)
             }
     }
-   
+    // MARK: - Get Current location
     private func getCurrentLocation() {
         
         // Ask for authorisation from the User.
@@ -115,26 +114,21 @@ class MainTableViewController: UITableViewController, SearchViewDelegate {
         }
         
     }
-    
     // MARK: - did Finish Network Updates (delegate method)
     func didFinishNetworkUpdates() {
         
         self.locationManager.stopUpdatingLocation()
         loadAllInformationAboutCity()
     }
-    
     // MARK: - view Did Load
     override func viewDidLoad() {
         
         super.viewDidLoad()
     }
-    
     // MARK: - view Did Appear
-    
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
-        getCurrentLocation()
     }
 
     // MARK: - override tableView functions
