@@ -21,8 +21,8 @@ enum NetworkVariable {
     
     static var currCityURL = "https://api.teleport.org/api/cities/geonameid:524901/"
     static var currUrbanAreaURL = "https://api.teleport.org/api/urban_areas/slug:moscow/"
-    static var currCityShortName = "Moscow-Moscow-Russia"
-    static var currCityButtonName = "Moscow, Moscow, Russia"
-    static var currCityTimezone = "Europe/Moscow"
-    static var currCityPopulation: UInt64 = 10381222
+    static var currCityShortName = "no data"
+    static var currCityButtonName = "no data"
+    static var currCityTimezone = "no data"
+    static var currCityPopulation: UInt64 = 0
 }

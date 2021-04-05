@@ -132,5 +132,32 @@ class NetworkService {
            }
            task.resume()
        }
+    
+    func loadInfoCityByCurrentLocation(lat: Double, long: Double, onComplete: @escaping (CityInfoByCurrentLocation) -> Void, onError: @escaping (Error) -> Void) {
+        
+        let urlString = "https://api.teleport.org/api/locations/\(lat),\(long)/"
+    
+        guard let url = URL(string: urlString) else { return }
+
+           let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+               if let error = error {
+                   onError(error)
+                   return
+               }
+               guard let  data = data else {
+                   onError(ServerError.noDataProvided)
+                   return
+               }
+               guard let infoByCurrLocation = try? JSONDecoder().decode(CityInfoByCurrentLocation.self, from: data) else {
+                   NSLog("could not decode")
+                   onError(ServerError.failedToDecode)
+                   return
+               }
+               DispatchQueue.main.async {
+                   onComplete(infoByCurrLocation)
+               }
+           }
+           task.resume()
+       }
 
 }

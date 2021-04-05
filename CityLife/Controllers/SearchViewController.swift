@@ -23,8 +23,7 @@ class SearchViewController: UIViewController, UITableViewDelegate {
     
     // MARK: - Data containers
     private var searchResultDataArray = [SearchResultData]()
-    private var basicInfoDataContainer: BasicInfoData? = nil
-        
+  
     // MARK: - Load data
     func loadCitiesNames(query: String) {
         
@@ -36,30 +35,13 @@ class SearchViewController: UIViewController, UITableViewDelegate {
             }
     }
     
-    func loadBasicInfoData() {
-        
-        let service = NetworkService()
     
-        service.loadBasicInfoByURL(onComplete: { [weak self] (cityInfo) in
-            self?.basicInfoDataContainer = cityInfo
-            NetworkVariable.currCityButtonName = self?.basicInfoDataContainer?.full_name ?? "data loading error"
-            NetworkVariable.currCityShortName = self?.basicInfoDataContainer?.name ?? "data loading error"
-            NetworkVariable.currCityPopulation = self?.basicInfoDataContainer?.population ?? 0
-            NetworkVariable.currCityTimezone = self?.basicInfoDataContainer?._links.timezone.name ?? "data loading error"
-            NetworkVariable.currUrbanAreaURL = self?.basicInfoDataContainer?._links.urban_area?.href ?? " "
-            self?.delegate?.didFinishNetworkUpdates()
-        })
-        { (error) in
-            NSLog(error.localizedDescription)
-        }
-    }
-    
-    // MARK: - viev Did Load
+    // MARK: - view Did Load
     override func viewDidLoad() {
         
         super.viewDidLoad()
     }
-
+    
 }
 
 // MARK: - extensions
@@ -81,7 +63,8 @@ extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         NetworkVariable.currCityURL = searchResultDataArray[indexPath.row]._links.item.href
-        loadBasicInfoData()
+    
+        delegate?.didFinishNetworkUpdates()
         dismiss(animated: true, completion: nil)
     }
 
