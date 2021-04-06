@@ -123,6 +123,7 @@ class MainTableViewController: UITableViewController, SearchViewDelegate {
     // MARK: - view Did Load
     override func viewDidLoad() {
         
+        loadDataByLocation()
         super.viewDidLoad()
     }
     // MARK: - view Did Appear

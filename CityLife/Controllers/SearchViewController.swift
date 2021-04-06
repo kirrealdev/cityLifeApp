@@ -34,8 +34,6 @@ class SearchViewController: UIViewController, UITableViewDelegate {
                 NSLog(error.localizedDescription)
             }
     }
-    
-    
     // MARK: - view Did Load
     override func viewDidLoad() {
         
